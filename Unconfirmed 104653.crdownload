@@ -1,0 +1,108 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[4]:
+
+
+import pandas as pd
+df=pd.read_csv("https://raw.githubusercontent.com/Kanikadel/capstone/main/BOOKSMASTERTdfEST.csv")
+df
+
+
+# In[5]:
+
+
+df.dtypes== 'object'
+
+
+# In[6]:
+
+
+d1=df.columns[df.dtypes!='object']
+d2=df.columns[df.dtypes =='object']
+print(d1)
+print(d2)
+
+
+# In[7]:
+
+
+df[d1].isnull().sum()
+
+
+# In[8]:
+
+
+df[d1].isnull()
+
+
+# In[9]:
+
+
+df.dropna()
+
+
+# In[14]:
+
+
+print(df["USERRATINGS"])
+
+
+# In[29]:
+
+
+c1 = (df["USERRATINGS"]>3.5)
+
+
+result= df[c1]
+print(result)
+
+
+# In[23]:
+
+
+ques4= df.sample()
+q4=pd.DataFrame(ques4)
+q4
+
+
+# In[24]:
+
+
+q4
+
+
+# In[28]:
+
+
+q4[["BOOKTITLE","AUTHORDESC"]]
+
+
+# In[46]:
+
+
+#5.	Obtain the author description for any one Book with User rating more than 4.5.
+q4=df[df["USERRATINGS"]>4.5].iloc[0]
+q4["AUTHORDESC"]
+
+
+# In[48]:
+
+
+unique_book=print(df['BOOKTITLE'].unique())
+print(unique_book)
+
+
+# In[55]:
+
+
+max_books=df[df["Popularity"].max()==df["Popularity"]]
+
+max_books.iloc[0]
+
+
+# In[ ]:
+
+
+
+
